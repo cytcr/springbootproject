@@ -3,10 +3,9 @@ package com.tcr.springboottest.user.controller;
 import com.tcr.springboottest.user.model.User;
 import com.tcr.springboottest.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("user")
 public class UserController {
 
@@ -21,7 +20,6 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    @ResponseBody
     public User getUser( @PathVariable("userId") String userId){
         return userService.getUser(userId);
     }
