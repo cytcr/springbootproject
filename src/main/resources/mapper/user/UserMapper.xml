@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tcr.springboottest.user.mapper.UserMappr" >
+
+    <resultMap id="BaseResultMap" type="com.tcr.springboottest.user.model.User" >
+      <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+      <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+      <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+      <result column="SEX" property="sex" jdbcType="CHAR" />
+      <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+      USER_ID, USER_NAME, PHONE, SEX, CREATE_DATE
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+      select
+      <include refid="Base_Column_List" />
+      from user
+      where user_Id = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+      delete from user
+      where user_Id = #{userId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="com.tcr.springboottest.user.model.User" >
+      insert into user (user_Id, user_name, phone,
+        sex, create_DATE)
+      values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{sex,jdbcType=CHAR}, #{createDate,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.tcr.springboottest.user.model.User" >
+      insert into user
+      <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="userId != null" >
+          user_Id,
+        </if>
+        <if test="userName != null" >
+          user_name,
+        </if>
+        <if test="phone != null" >
+          phone,
+        </if>
+        <if test="sex != null" >
+          sex,
+        </if>
+        <if test="createDate != null" >
+          create_DATE,
+        </if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="userId != null" >
+          #{userId,jdbcType=VARCHAR},
+        </if>
+        <if test="userName != null" >
+          #{userName,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null" >
+          #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null" >
+          #{sex,jdbcType=CHAR},
+        </if>
+        <if test="createDate != null" >
+          #{createDate,jdbcType=TIMESTAMP},
+        </if>
+      </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.tcr.springboottest.user.model.User" >
+      update user
+      <set >
+        <if test="userName != null" >
+          user_name = #{userName,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null" >
+          phone = #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null" >
+          sex = #{sex,jdbcType=CHAR},
+        </if>
+        <if test="createDate != null" >
+          create_DATE = #{createDate,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where user_Id = #{userId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.tcr.springboottest.user.model.User" >
+      update user
+      set user_name = #{userName,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=CHAR},
+        create_DATE = #{createDate,jdbcType=TIMESTAMP}
+      where user_Id = #{userId,jdbcType=VARCHAR}
+    </update>
+</mapper>
