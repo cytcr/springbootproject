@@ -20,6 +20,7 @@ pom依赖
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+
 application.properties配置文件
 
 #数据库连接配置
@@ -31,3 +32,4 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 mybatis-plus.mapper-locations=classpath:mapper/*/*.xml
 mybatis-plus.configuration.call-setters-on-nulls=true
 mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+
