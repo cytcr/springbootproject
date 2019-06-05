@@ -14,11 +14,25 @@
       USER_ID, USER_NAME, PHONE, SEX, CREATE_DATE
     </sql>
 
+    <sql id="like_condition">
+      <if test="userParam.userName!=null and userParam.userName != '' "> AND INSTR(U.USER_NAME,#{userParam.userName})>0 </if>
+
+    </sql>
+
+
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
       select
       <include refid="Base_Column_List" />
       from user
       where user_Id = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByPage" resultMap="BaseResultMap" parameterType="com.tcr.springboottest.user.vo.UserParamVO" >
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM USER U
+      WHERE 1=1
+      <include refid="like_condition"/>
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
