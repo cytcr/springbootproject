@@ -1,0 +1,2 @@
+2019-06-05 15:59:10.630 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - Skipping MapperFactoryBean with name 'userMappr' and 'com.tcr.springboottest.user.mapper.UserMappr' mapperInterface. Bean already defined with the same name!
+2019-06-05 15:59:10.631 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tcr.springboottest.*.mapper]' package. Please check your configuration.
