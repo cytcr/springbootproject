@@ -1,5 +1,6 @@
 package com.tcr.springboottest.user.controller;
 
+import com.tcr.springboottest.exception.BusinessException;
 import com.tcr.springboottest.user.model.User;
 import com.tcr.springboottest.user.service.UserService;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class UserControllerTest {
     private UserService userService;
 
     @Test
-    public void saveUser() {
+    public void saveUser()throws Exception {
         User u = new User();
         u.setUserName("李元霸");
         u.setPhone("13888888888");
@@ -35,9 +36,23 @@ public class UserControllerTest {
 
     @Test
     public void update() {
+        try {
+            testException(2);
+        }catch (BusinessException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Test
     public void deleteUser() {
+    }
+
+    public void testException(int a) throws BusinessException {
+        if(a>1){
+            throw new BusinessException("10","1");
+        }else{
+            System.out.println(a);
+        }
     }
 }

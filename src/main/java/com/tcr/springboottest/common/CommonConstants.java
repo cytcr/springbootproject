@@ -8,6 +8,12 @@ package com.tcr.springboottest.common;
 */
 public class CommonConstants {
 
+    public static final String OP_SUCESS = "操作成功";
+
+    public static final String OP_FAILED = "操作失败";
+
+    public static final String PARAMS_UNLAWFULNESS = "参数不合法";
+
     /**
      * 是或者否
      * @Author TCR

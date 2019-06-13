@@ -11,12 +11,12 @@ public class BusinessException extends Exception{
     private static final long serialVersionUID = 1L;
 
     /**
-     * 默认异常代码 1111
+     * 默认异常代码 1000
      */
-    public static final String DEFAULT_CODE = "1111";
+    public static final String DEFAULT_CODE = "1000";
 
     /**
-     * 错误代码 默认1111
+     * 错误代码 默认 1000
      */
     @Getter
     private final String errCode;

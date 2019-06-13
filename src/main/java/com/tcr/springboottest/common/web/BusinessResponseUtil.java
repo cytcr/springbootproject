@@ -44,6 +44,17 @@ public class BusinessResponseUtil {
        return new BusinessResponse<T>(status,msg,data);
     }
 
+    /**
+     * 构造返回失败实例
+     * @Author TCR
+     * @Email:670830864@qq.com
+     * @Date 2019/6/12 14:57
+     * @return BusinessResponse
+    */
+    public static BusinessResponse failed(String status,String msg){
+       return new BusinessResponse(status,msg);
+    }
+
 
 
 }
